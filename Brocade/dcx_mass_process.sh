@@ -161,10 +161,10 @@ do
         summarize
 
 	case $host in
-		10.0.66.130 ) fid=3 ;;
-		10.0.66.150 ) fid=3 ;;
-		10.0.66.140 ) fid=4 ;;
-		10.0.66.160 ) fid=4 ;;
+		10.0.0.13 ) fid=3 ;;
+		10.0.0.15 ) fid=3 ;;
+		10.0.0.14 ) fid=4 ;;
+		10.0.0.16 ) fid=4 ;;
 	esac
 	config_upload
 	mv ~/config.txt ${workdir}/config_${host}_${fid}.txt
