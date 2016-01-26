@@ -99,7 +99,7 @@ do
 		"Prefix" )
 			mv --verbose --interactive ${file} $(dirname ${file})/${fstring}$(basename ${file})
 		;;
-		"Delete" )
+		"Delete"|"Replace" )
 			if [[ ${fextension} ]]
 			then
 				extension=$([[ "${file}" = *.* ]] && echo ".${file##*.}" || echo '')
@@ -110,28 +110,11 @@ do
 
 			if [[ "${fname}" == *${fstring}* ]]
 			then
-				fnamedst=$(echo ${fname}|sed s/${fstring}//g)${extension}
+				fnamedst=$(echo ${fname}|sed s/${fstring}/${fstringr}/g)${extension}
 				mv --verbose --interactive ${file} $(dirname ${file})/${fnamedst}
 			else
 				echo ${file} skipped
 			fi
-		;;
-		"Replace" )
-                        if [[ ${fextension} ]]
-                        then
-                                extension=$([[ "${file}" = *.* ]] && echo ".${file##*.}" || echo '')
-                                fname=$(basename ${file%.*})
-                        else
-                                fname=$(basename ${file})
-                        fi
-
-                        if [[ "${fname}" == *${fstring}* ]]
-                        then
-                                fnamedst=$(echo ${fname}|sed s/${fstring}/${fstringr}/g)${extension}
-                                mv --verbose --interactive ${file} $(dirname ${file})/${fnamedst}
-                        else
-                                echo ${file} skipped
-                        fi
 		;;
 		* )
 			echo "Error: Action \"${faction}\" not implemented"
