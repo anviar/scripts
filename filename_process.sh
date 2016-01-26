@@ -6,6 +6,7 @@ Here is:
 Actions can be:
 	-a|--add string			add string at the end of filenames
 	-p|--prefix string		add string at the begining of filenames
+	-d|--delete string		delete string from filename
 	-r|--replace string to_string	replace string to string"
 
 if [[ -z $1 ]]
